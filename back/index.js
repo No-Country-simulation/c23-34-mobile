@@ -1,6 +1,8 @@
 import express from 'express';
-
+import {PORT} from './config.js'; 
+import {connectDB} from './model/db.model.js';   
 const app = express();
-const PORT = process.env.PORT || 3000;  
 
+app.use(express.json());
 app.listen(PORT, ()=>{console.log(`Server running in port ${PORT}`);})
+connectDB();
