@@ -4,7 +4,7 @@ import {hashData} from '../utils/utils.js';
 export class UserService{
     static async getUsers(){
         const users = await userModel.find();
-        if(!users) throw new Error('No users found');
+        if(users.length == 0) throw new Error('There are not users');
 
         return users;
     }
@@ -15,8 +15,8 @@ export class UserService{
         return user
     }
     static async createUser({userBody}){
-        const passHash = await hashData(userBody.password)
-        const user = await userModel.create({...userBody,passHash})
+        const passHash = await hashData(userBody.userPassword)
+        const user = await userModel.create({...userBody, userPassword: passHash})
         console.log(user);//lanzar un error si no se creea
 
         return {message: 'user successfully created',user}

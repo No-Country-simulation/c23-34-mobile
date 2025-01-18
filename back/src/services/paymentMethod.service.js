@@ -1,9 +1,10 @@
 import {paymentMethodModel} from '../models/paymentMethod.model.js';
 import {encryptData,decryptData} from '../utils/utils.js';
+
 export class PaymentMethodService {
     static async getPaymentMethods(){
         const paymentMethods = await paymentMethodModel.find().select('+cardNumber')
-        if(paymentMethods.length == 0) throw new Error('No paymentMethos found')
+        if(paymentMethods.length == 0) throw new Error('There are no paymentMethods')
         const decryptPaymentMethods = paymentMethods.map((py)=>{
             return {...py, cardNumber : decryptData(py.cardNumber)}
         })

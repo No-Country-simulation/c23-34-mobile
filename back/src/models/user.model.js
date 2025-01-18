@@ -1,13 +1,13 @@
 import {Schema,model} from 'mongoose';
 
 const schema = new Schema({
-    name : {type:String, required:true},
-    lastName : {type:String, required:true},
-    dni : {type:String, required: true},
-    email : {type:String, required:true, unique : true},   
-    password : {type:String, required:true},    
-    favoriteServices : [
-        {type : Schema.types.ObjectId, ref : 'service'}
+    userName : {type:String, required:true},
+    userLastName : {type:String, required:true},
+    userDni : {type:String, required: true},
+    userEmail : {type:String, required:true, unique : true},   
+    userPassword : {type:String, required:true},    
+    userFavoriteServices : [
+        {type : Schema.Types.ObjectId, ref : 'service'}
     ]
 })
 
