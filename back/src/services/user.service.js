@@ -1,5 +1,6 @@
 import {userModel} from '../models/user.model.js';
-import {encryptData} from '../utils/utils.js';
+import {hashData} from '../utils/utils.js';
+
 export class UserService{
     static async getUsers(){
         const users = await userModel.find();
@@ -13,7 +14,7 @@ export class UserService{
     }
     static async createUser({userBody}){
         const {password} = userBody
-        const passHash = await encryptData(password)
+        const passHash = await hashData(password)
         const user = await userModel.create({...userBody,passHash})
         console.log(user);//lanzar un error
         return user
@@ -29,12 +30,13 @@ export class UserService{
         }
 
         const userUpdate = await user.save()
+        console.log(userUpdate); //lanzar error
         return userUpdate
     }
 
     static async deleteUser({id}){
         const user = await userModel.findOneAndDelete(id)
-        if(!user) throw new Error('not deleted user')
+        console.log(user) //lanzar error;
         return user
     }
 }

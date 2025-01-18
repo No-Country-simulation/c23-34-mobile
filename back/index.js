@@ -1,6 +1,6 @@
 import express from 'express';
-import {PORT} from './config.js'; 
-import {connectDB} from './models/db.model.js';   
+import {PORT} from './src/utils/config.js'; 
+import {connectDB} from './src/utils/db.js';   
 const app = express();
 
 app.use(express.json());
