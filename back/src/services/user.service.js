@@ -10,7 +10,11 @@ export class UserService{
     }
     static async getUserById({id}){
         const user = await userModel.findById(id)
-        if(!user) throw new Error('No user found')
+        if(!user) {
+            const error = new Error('No user found')
+            error.statusCode = 404
+            throw error//propagacion de errores
+        }
 
         return user
     }
