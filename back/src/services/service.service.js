@@ -11,7 +11,7 @@ export class ServiceS {
     }
     
     static async getFavoriteServiceById({id,serviceId}){
-        const user = await userModel.findById(id)
+        const user = await userModel.findById(id).populate('userFavoriteServices')
         if(!user) throw new Error ('no user found')
         const favoriteService = user.userFavoriteServices.find(s => s._id == serviceId)
         if(!favoriteService) throw new Error('no favoriteService found')
@@ -20,16 +20,17 @@ export class ServiceS {
     }
 
     static async createFavoriteService({id, fsBody}){
+        //check if exists service
         let service = await serviceModel.findOne({serviceId: fsBody.serviceId})
-        //create service
         if(!service) {
             service =  await serviceModel.create(fsBody)
             console.log('new service created');
         }
         //check user has service
         const user = await userModel.findById(id)
+        if(!user) throw new Error ('no user found')
         const isService = user.userFavoriteServices.some(s => s._id == service._id)
-        if(isService) throw new Error('service is register')
+        if(isService) throw new Error('service is registered')
         //user add service
         user.userFavoriteServices.push({_id : service._id})
         await user.save()
