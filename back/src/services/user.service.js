@@ -2,12 +2,7 @@ import {userModel} from '../models/user.model.js';
 import {hashData} from '../utils/utils.js';
 
 export class UserService{
-    static async getUsers(){
-        const users = await userModel.find();
-        if(users.length == 0) throw new Error('There are not users');
 
-        return users;
-    }
     static async getUserById({id}){
         const user = await userModel.findById(id)
         if(!user) {
@@ -32,12 +27,5 @@ export class UserService{
         console.log(userUpdate); 
 
         return {message : 'user successfully updated',userUpdate}
-    }
-
-    static async deleteUser({id}){
-        const user = await userModel.findByIdAndDelete(id)
-        console.log(user) 
-
-        return {message : 'user successfully deleted'}
     }
 }
