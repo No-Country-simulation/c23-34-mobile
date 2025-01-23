@@ -6,9 +6,10 @@ const schema = new Schema({
     userDni : {type:String, required: true},
     userEmail : {type:String, required:true, unique : true},   
     userPassword : {type:String, required:true},    
-    userFavoriteServices : [
-        {type : Schema.Types.ObjectId, ref : 'service'}
-    ]
+    userFavoriteServices : {
+        type : [ {type : Schema.Types.ObjectId, ref : 'service'}],
+        default : []
+    }
 })
 
 export const userModel = model('user', schema);
