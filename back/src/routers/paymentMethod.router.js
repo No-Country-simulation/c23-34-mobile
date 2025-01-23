@@ -3,9 +3,9 @@ import {PaymentMethodController} from '../controllers/paymentMethod.controller.j
 import {validateSchema} from '../middlewares/validateSchema.js';
 import {paymentMethodSchema} from '../schemas/paymentMethod.schema.js';
 
-export const paymentMethodRoute = Router()
-paymentMethodRoute.get('/',PaymentMethodController.getPaymentMethods)
-paymentMethodRoute.get('/:id',PaymentMethodController.getPaymentMethodById)
-paymentMethodRoute.post('/',validateSchema(paymentMethodSchema), PaymentMethodController.createPaymentMethod)
-paymentMethodRoute.put('/:id',validateSchema(paymentMethodSchema), PaymentMethodController.updatePaymentMethod)
-paymentMethodRoute.delete('/:id',PaymentMethodController.deletePaymentMethod)
+export const paymentMethodRouter = Router()
+paymentMethodRouter.get('/',PaymentMethodController.getPaymentMethods)
+paymentMethodRouter.get('/:id',PaymentMethodController.getPaymentMethodById)
+paymentMethodRouter.post('/',validateSchema(paymentMethodSchema), PaymentMethodController.createPaymentMethod)
+paymentMethodRouter.put('/:id',validateSchema(paymentMethodSchema), PaymentMethodController.updatePaymentMethod)
+paymentMethodRouter.delete('/:id',PaymentMethodController.deletePaymentMethod)
