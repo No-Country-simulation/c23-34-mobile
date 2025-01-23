@@ -1,5 +1,4 @@
 import {userModel} from '../models/user.model.js';
-import {hashData} from '../utils/utils.js';
 
 export class UserService{
 
@@ -12,13 +11,6 @@ export class UserService{
         }
 
         return user
-    }
-    static async createUser({userBody}){
-        const passHash = await hashData(userBody.userPassword)
-        const user = await userModel.create({...userBody, userPassword: passHash})
-        console.log(user);//lanzar un error si no se creea
-
-        return {message: 'user successfully created',user}
     }
     static async updateUser({id,userBody}){
         const user = await userModel.findById(id)

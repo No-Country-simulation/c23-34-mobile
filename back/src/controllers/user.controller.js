@@ -10,15 +10,6 @@ export class UserController {
             next(error)
         }
     }
-    static async createUser(req,res,next){
-        try {
-            const userBody = req.body
-            const user = await UserService.createUser({userBody})
-            res.status(201).json({success: true, user})
-        } catch (error) {
-            next(error)
-        }
-    }
     static async updateUser(req,res,next){
         try {
             const {id} = req.params

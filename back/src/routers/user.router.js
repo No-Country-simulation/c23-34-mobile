@@ -5,6 +5,5 @@ import {userSchema} from '../schemas/user.schema.js';
 
 export const userRoute = Router()
 userRoute.get('/:id',UserController.getUserById)
-userRoute.post('/', validateSchema(userSchema),UserController.createUser)
 userRoute.put('/:id', validateSchema(userSchema),UserController.updateUser)
 

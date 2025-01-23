@@ -8,3 +8,8 @@ export const userSchema = z.object({
     userPassword : z.string().min(8),
     userFavoriteServices : z.optional().default([])
 })
+
+export const loginUserSchema = z.object({
+    userEmail : z.string().email(),
+    userPassword : z.string().min(8)
+})
