@@ -4,7 +4,7 @@ export class PaymentController{
     static async getPayments(req,res,next){
         try {
             const payments = await PaymentService.getPayments()
-            res.status(200).json({success: true, payments})
+            res.status(200).json(payments)
         } catch (error) {
             next(error)
         }
@@ -13,7 +13,7 @@ export class PaymentController{
         try {
             const {id} = req.params
             const payment = await PaymentService.getPaymentById({id})
-            res.status(200).json({success: true, payment})
+            res.status(200).json(payment)
         } catch (error) {
             next(error)
         }
@@ -22,7 +22,7 @@ export class PaymentController{
         try {
             const paymentBody = req.body
             const payment = await PaymentService.createPayment({paymentBody})
-            res.status(200).json({success: true, payment})
+            res.status(201).json(payment)
         } catch (error) {
             next(error)
         }
