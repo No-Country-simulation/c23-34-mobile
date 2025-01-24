@@ -3,7 +3,7 @@ import {SECRET_KEY} from '../utils/config.js';
 
 export const validateToken = (req, res, next) =>{
     try {
-        const authHeader = req.header.authorization
+        const authHeader = req.header('Authorization')
         if(!authHeader) return res.status(401).json({error : 'Token no esta proporcionado'})
         
         const token = authHeader.replace('Bearer ', '')

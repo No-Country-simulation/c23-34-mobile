@@ -1,5 +1,5 @@
 import {userModel} from '../models/user.model.js';
-
+import {hashData} from '../utils/utils.js';
 export class UserService{
 
     static async getUserById({id}){
@@ -13,11 +13,10 @@ export class UserService{
         return user
     }
     static async updateUser({id,userBody}){
-        const user = await userModel.findById(id)
-        if(!user) throw new Error('No user found')
-        const userUpdate = await userModel.updateOne({_id : id}, {$set : userBody})
-        console.log(userUpdate); 
+        const passHash = await hashData(userBody.userPassword)
+        const user = await userModel.findByIdAndUpdate(id,{$set : {...userBody, userPassword : passHash}, new : true})
+        if(!user) throw new Error('No user found and no data change')
 
-        return {message : 'user successfully updated',userUpdate}
+        return {success : true,message : 'user successfully updated',user}
     }
 }

@@ -9,9 +9,8 @@ export class AuthService{
         if(user) throw new Error ('This email is registered')
         const passHash = await hashData(authBody.userPassword)
         const newUser = await userModel.create({...authBody, userPassword : passHash})
-        console.log(newUser);
 
-        return {message : 'user successfully registered', newUser}
+        return {success:true, message : 'user successfully registered', newUser}
     }
     static async logIn ({authBody}){
         const {userEmail, userPassword}  = authBody

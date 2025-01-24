@@ -12,16 +12,4 @@ export const loginUserSchema = z.object({
     userEmail : z.string().email(),
     userPassword : z.string().min(8)
 })
-const testSchema = () => {
-    const data = {
-        // userName: "Juan",
-        // userLastName: "Pérez",
-        // userDNI: "12345678",
-        userEmail: "agustin@gmail.com",
-        userPassword: "password123"
-    };
 
-    const parseData = loginUserSchema.parse(data)
-    // console.log(parseData);
-}
-// testSchema()

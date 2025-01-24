@@ -5,7 +5,7 @@ export class UserController {
         try {
             const {id} = req.params
             const user = await UserService.getUserById({id})
-            res.status(200).json({success: true, user})
+            res.status(200).json(user)
         } catch (error) {
             next(error)
         }
@@ -15,7 +15,7 @@ export class UserController {
             const {id} = req.params
             const userBody = req.body
             const user = await UserService.updateUser({id,userBody})
-            res.status(200).json({success:true, user})
+            res.status(200).json(user)
         } catch (error) {
             next(error)
         }

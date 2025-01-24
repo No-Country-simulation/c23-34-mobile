@@ -5,7 +5,7 @@ export class AuthController{
         try {
             const authBody = req.body
             const auth = await AuthService.signUp({authBody})
-            res.status(201).json({success: true, auth})
+            res.status(201).json(auth)
         } catch (error) {
             next(error)
         }
