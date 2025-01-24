@@ -17,10 +17,10 @@ export class AuthService{
         const {userEmail, userPassword}  = authBody
         const user = await userModel.findOne({userEmail})
         if(!user) throw new Error('User no found by email')
-        const validatePass = verifyHashData(userPassword, user.userPassword)
+        const validatePass = await verifyHashData(userPassword, user.userPassword)
         if(!validatePass) throw new Error('Password no match with email')
         const token = jwt.sign({id : user._id}, SECRET_KEY, {expiresIn : '30m'} )
-
+        
         return token
     }
 }
