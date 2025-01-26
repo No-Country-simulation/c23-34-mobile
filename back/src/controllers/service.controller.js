@@ -5,7 +5,7 @@ export class ServiceController{
         try {
             const {id} = req.params
             const favoriteServices = await ServiceS.getFavoriteServices({id})
-            res.status(200).json({success: true, favoriteServices})
+            res.status(200).json(favoriteServices)
         } catch (error) {
             next(error)
         }
@@ -14,7 +14,7 @@ export class ServiceController{
         try {
             const {id,serviceId} = req.params
             const favoriteService = await ServiceS.getFavoriteServiceById({id,serviceId})
-            res.status(200).json({success:true,favoriteService})
+            res.status(200).json(favoriteService)
         } catch (error) {
             next(error)
         }
@@ -24,7 +24,7 @@ export class ServiceController{
             const {id} = req.params
             const fsBody = req.body
             const favoriteService = await ServiceS.createFavoriteService({id,fsBody})
-            res.status(201).json({success:true,favoriteService})
+            res.status(201).json(favoriteService)
         } catch (error) {
             next(error)
         }
@@ -33,7 +33,7 @@ export class ServiceController{
         try {
             const {id,serviceId} = req.params
             const favoriteService = await ServiceS.deleteFavoriteService({id,serviceId})
-            res.status(200).json({success:true,favoriteService})
+            res.status(200).json(favoriteService)
         } catch (error) {
             next(error)
         }
