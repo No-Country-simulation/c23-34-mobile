@@ -6,6 +6,6 @@ export const paymentSchema = z.object({
     serviceId : objectIdSchema,
     paymentMethodId : objectIdSchema,
     paymentAmount : z.number().min(0),
-    paymentStatus : z.enum['aprovvedd', 'pending', 'reject'],
-    paymentDateCreated : z.string().date().optional()
+    paymentStatus : z.enum(['approved', 'pending', 'rejected']),
+    paymentDateCreated : z.date().optional()
 })

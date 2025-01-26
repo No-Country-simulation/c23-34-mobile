@@ -1,18 +1,23 @@
 import {paymentModel} from '../models/payment.model.js';
+import {formatDate} from '../utils/utils.js';
 
 export class PaymentService{
     static async getPayments(){
-        const payments = await paymentModel.find()
+        let payments = await paymentModel.find().lean()
         if(payments.length == 0 ) throw new Error('There are no payments')
-        
+        payments = payments.map(p => {
+        p.paymentDateCreated = formatDate(p.paymentDateCreated)
+        return p
+        })
+
         return payments
     }
 
     static async getPaymentById({id}){
-        const payment = await paymentModel.findById(id)
+        const payment = await paymentModel.findById(id).lean().populate(['userId','serviceId','paymentMethodId'])
         if(!payment) throw new Error('Payment no found')
 
-        return payment
+        return {...payment, paymentDateCreated : formatDate(payment.paymentDateCreated)}
     }
 
     static async createPayment({paymentBody}){
