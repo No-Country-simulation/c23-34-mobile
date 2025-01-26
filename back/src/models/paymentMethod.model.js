@@ -5,7 +5,7 @@ const schema = new Schema({
     cardHolderName: {type: String, required: true}, 
     cardNumber : {type: String, required: true, select : false},    
     cardType : {type: String, enum : ['credit' , 'debit'],required: true},
-    cardExpirationDate : {type: Date, required: true},
+    cardExpirationDate : {type: String, required: true},
     cardCvv : {type: String, required: true, select : false}, //re comienda no almacenara
     cardDateCreated : {type: Date, default: Date.now}
 })

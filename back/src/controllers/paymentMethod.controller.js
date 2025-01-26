@@ -4,7 +4,7 @@ export class PaymentMethodController{
     static async getPaymentMethods(req,res,next){
         try {
             const paymentMethods = await PaymentMethodService.getPaymentMethods()
-            res.status(200).json({success:true,paymentMethods})
+            res.status(200).json(paymentMethods)
         } catch (error) {
             next(error)            
         }
@@ -13,7 +13,7 @@ export class PaymentMethodController{
         try {
             const {id} = req.params
             const paymentMethod = await PaymentMethodService.getPaymentMethodById({id})
-            res.status(200).json({success:true,paymentMethod})
+            res.status(200).json(paymentMethod)
         } catch (error) {
             next(error)
         }
@@ -22,7 +22,7 @@ export class PaymentMethodController{
         try {
             const pmBody = req.body
             const paymentMethod = await PaymentMethodService.createPaymentMethod({pmBody})
-            res.status(201).json({success:true, paymentMethod})
+            res.status(201).json(paymentMethod)
         } catch (error) {
             next(error)
         }
@@ -32,7 +32,7 @@ export class PaymentMethodController{
             const {id} = req.params
             const pmBody = req.body
             const paymentMethod = await PaymentMethodService.updatePaymentMethod({id,pmBody})
-            res.status(200).json({success:true, paymentMethod})
+            res.status(200).json(paymentMethod)
         } catch (error) {
             next(error)
         }
@@ -41,7 +41,7 @@ export class PaymentMethodController{
         try {
             const {id} = req.params
             const paymentMethod = await PaymentMethodService.deletePaymentMethod({id})
-            res.status(200).json({success:true, paymentMethod})
+            res.status(200).json(paymentMethod)
         } catch (error) {
             next(error)
         }

@@ -3,46 +3,48 @@ import {encryptData,decryptData} from '../utils/utils.js';
 
 export class PaymentMethodService {
     static async getPaymentMethods(){
-        const paymentMethods = await paymentMethodModel.find().select('+cardNumber +cardCvv')
+        const paymentMethods = await paymentMethodModel.find().lean().select('+cardNumber +cardCvv')
         if(paymentMethods.length == 0) throw new Error('There are no paymentMethods')
-        const decryptPaymentMethods = paymentMethods.map((py)=>{
-            return {...py, cardNumber : decryptData(py.cardNumber), cardCvv : decryptData(py.cardCvv)}
+        const decryptPaymentMethods = paymentMethods.map((p)=>{
+            p.cardNumber = decryptData(p.cardNumber)
+            p.cardCvv = decryptData(p.cardCvv)
+            return p
         })
 
         return decryptPaymentMethods
     }
 
     static async getPaymentMethodById({id}){
-        const paymentMethod = await paymentMethodModel.findById(id).select('+cardNumber + cardCvv')
-        if(!paymentMethod) throw new Error('No paymentMethod found')    
-
-        return {...paymentMethod, cardNumber: decryptData(paymentMethod.cardNumber), cardCvv: decryptData(paymentMethod.cardCvv)}
+        const paymentMethod = await paymentMethodModel.findById(id).lean().select('+cardNumber +cardCvv')
+        if(!paymentMethod) throw new Error('PaymentMethod no found')  
+        Object.assign(paymentMethod,{
+            cardNumber : decryptData(paymentMethod.cardNumber),
+            cardCvv : decryptData(paymentMethod.cardCvv)
+            })
+        return paymentMethod
     }
     
     static async createPaymentMethod({pmBody}){
         const encryptCardNumber =  encryptData(pmBody.cardNumber)
         const encryptCardCvv = encryptData(pmBody.cardCvv)
         const paymentMethod = await paymentMethodModel.create({...pmBody, cardNumber: encryptCardNumber, cardCvv : encryptCardCvv})
-        console.log(paymentMethod);
 
-        return {message : 'paymentMethod successfully created', paymentMethod}
+        return {success: true, message : 'paymentMethod successfully created', paymentMethod}
     }
 
-    static async updatePaymentMethod({id, pmBody}){
-        const paymentMethod = await paymentMethodModel.findById(id)
-        if(!paymentMethod) throw new Error('No paymentMethod found')        
+    static async updatePaymentMethod({id, pmBody}){   
         const encryptCardNumber = encryptData(pmBody.cardNumber)
         const encryptCardCvv = encryptData(pmBody.cardCvv)
-        const paymentMethodUpdate = await paymentMethodModel.updateOne({_id : id},{$set : {...pmBody, cardNumber : encryptCardNumber, cardCvv : encryptCardCvv}})
-        console.log(paymentMethodUpdate);
+        const paymentMethodUpdate = await paymentMethodModel.findByIdAndUpdate(id,{$set : {...pmBody, cardNumber : encryptCardNumber, cardCvv : encryptCardCvv}, new : true})
+        if(!paymentMethodUpdate) throw new Error('PaymentMethod no found')
 
-        return {message : 'paymentMethod successfully updated',paymentMethodUpdate}
+        return {success: true, message : 'paymentMethod successfully updated',paymentMethodUpdate}
     }
 
     static async deletePaymentMethod({id}){
         const paymentMethod = await paymentMethodModel.findByIdAndDelete(id)
-        console.log(paymentMethod);
+        if(!paymentMethod) throw new Error('PaymentMethod no found')
 
-        return {message : 'paymentMethod successfully deleted',paymentMethod}
+        return {success: true, message : 'paymentMethod successfully deleted',paymentMethod}
     }
 }
