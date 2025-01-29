@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "type": "utility",
+        "name": "Luz",
+        "order": 1
+    },
+    {
+        "id": "2",
+        "type": "insurance",
+        "name": "Medicina Prepaga",
+        "order": 2
+    },
+    {
+        "id": "3",
+        "type": "telecom",
+        "name": "Telefonía",
+        "order": 3
+    }
+]

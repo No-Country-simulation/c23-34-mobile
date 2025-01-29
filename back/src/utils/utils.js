@@ -6,14 +6,11 @@ import {SECRET_KEY} from './config.js';
 export const hashData = async (data) => {
     const salt = await bcrypt.genSalt(10)
     const dataHash = await bcrypt.hash(data,salt)
-
-    console.log(dataHash);//lanzar error
     return dataHash
 } 
 
 export const verifyHashData = async (dataCompare, dataHash) => {
     const dataVerify  = await bcrypt.compare(dataCompare,dataHash)
-    console.log(dataVerify);
     return dataVerify
 }
 
@@ -31,4 +28,8 @@ export const decryptData = (data) => {
 export const formatDate = (date) => {
     return format(new Date(date), 'dd/MM/yyy')
 }
-console.log(formatDate('2025-01-26T02:55:13.753Z'));
+
+//permite leer archivos json con moduls 
+import { createRequire } from 'node:module'
+const require = createRequire(import.meta.url)
+export const readJSON = (path) => require(path)//importar y pasar ruta del json

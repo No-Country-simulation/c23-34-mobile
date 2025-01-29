@@ -1,0 +1,101 @@
+[
+    {
+      "id": "1",
+      "type": "service",
+      "name": "Edenor",
+      "cuit": "30-65586112-2",
+      "picture_url": "string",
+      "category": {
+        "id": "1",
+        "name": "Luz"
+      }
+    },
+    {
+      "id": "2",
+      "type": "service",
+      "name": "Edesur",
+      "cuit": "30-61051924-5",
+      "picture_url": "string",
+      "category": {
+        "id": "1",
+        "name": "Luz"
+      }
+    },
+    {
+      "id": "3",
+      "type": "service",
+      "name": "Camuzzi Gas Pampeana",
+      "cuit": "30-53717212-6",
+      "picture_url": "string",
+      "category": {
+        "id": "1",
+        "name": "Luz"
+      }
+    },
+    {
+      "id": "4",
+      "type": "service",
+      "name": "Swiss Medical",
+      "cuit": "30-50017345-5",
+      "picture_url": "string",
+      "category": {
+        "id": "2",
+        "name": "Medicina Prepaga"
+      }
+    },
+    {
+      "id": "5",
+      "type": "service",
+      "name": "OSDE",
+      "cuit": "30-51796160-5",
+      "picture_url": "string",
+      "category": {
+        "id": "2",
+        "name": "Medicina Prepaga"
+      }
+    },
+    {
+      "id": "6",
+      "type": "service",
+      "name": "Medifé",
+      "cuit": "30-58891715-3",
+      "picture_url": "string",
+      "category": {
+        "id": "2",
+        "name": "Medicina Prepaga"
+      }
+    },
+    {
+      "id": "7",
+      "type": "service",
+      "name": "Personal",
+      "cuit": "30-61500123-0",
+      "picture_url": "string",
+      "category": {
+        "id": "3",
+        "name": "Telefonía"
+      }
+    },
+    {
+      "id": "8",
+      "type": "service",
+      "name": "Movistar",
+      "cuit": "30-70216638-6",
+      "picture_url": "string",
+      "category": {
+        "id": "3",
+        "name": "Telefonía"
+      }
+    },
+    {
+      "id": "9",
+      "type": "service",
+      "name": "Claro",
+      "cuit": "30-68267141-8",
+      "picture_url": "string",
+      "category": {
+        "id": "3",
+        "name": "Telefonía"
+      }
+    }
+  ]
