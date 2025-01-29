@@ -1,101 +1,149 @@
 [
     {
-      "id": "1",
+      "serviceId": "0001",
       "type": "service",
       "name": "Edenor",
       "cuit": "30-65586112-2",
       "picture_url": "string",
       "category": {
-        "id": "1",
+        "id": "01",
         "name": "Luz"
-      }
+      },
+      "registeredUsers": [
+        {
+          "clienteId" : "88888888"
+        }
+      ]
     },
     {
-      "id": "2",
+      "serviceId": "0002",
       "type": "service",
       "name": "Edesur",
       "cuit": "30-61051924-5",
       "picture_url": "string",
       "category": {
-        "id": "1",
+        "id": "01",
         "name": "Luz"
-      }
+      },
+      "registeredUsers": [
+        {
+          "clienteId" : "88888888"
+        }
+      ]
     },
     {
-      "id": "3",
+      "serviceId": "0003",
       "type": "service",
       "name": "Camuzzi Gas Pampeana",
       "cuit": "30-53717212-6",
       "picture_url": "string",
       "category": {
-        "id": "1",
+        "id": "01",
         "name": "Luz"
-      }
+      },
+      "registeredUsers": [
+        {
+          "clienteId" : "88888888"
+        }
+      ]
     },
     {
-      "id": "4",
+      "serviceId": "0004",
       "type": "service",
       "name": "Swiss Medical",
       "cuit": "30-50017345-5",
       "picture_url": "string",
       "category": {
-        "id": "2",
+        "id": "02",
         "name": "Medicina Prepaga"
-      }
+      },
+      "registeredUsers": [
+        {
+          "clienteId" : "88888888"
+        }
+      ]
     },
     {
-      "id": "5",
+      "serviceId": "0005",
       "type": "service",
       "name": "OSDE",
       "cuit": "30-51796160-5",
       "picture_url": "string",
       "category": {
-        "id": "2",
+        "id": "02",
         "name": "Medicina Prepaga"
-      }
+      },
+      "registeredUsers": [
+        {
+          "clienteId" : "88888888"
+        }
+      ]
     },
     {
-      "id": "6",
+      "serviceId": "0006",
       "type": "service",
       "name": "Medifé",
       "cuit": "30-58891715-3",
       "picture_url": "string",
       "category": {
-        "id": "2",
+        "id": "02",
         "name": "Medicina Prepaga"
-      }
+      },
+      "registeredUsers": [
+        {
+          "clienteId" : "88888888"
+        }
+      ]
     },
     {
-      "id": "7",
+      "serviceId": "0007",
       "type": "service",
       "name": "Personal",
       "cuit": "30-61500123-0",
       "picture_url": "string",
       "category": {
-        "id": "3",
+        "id": "03",
         "name": "Telefonía"
-      }
+      },
+      "registeredUsers": [
+        {
+          "clienteId" : "88888888"
+        }
+      ]
     },
     {
-      "id": "8",
+      "serviceId": "0008",
       "type": "service",
       "name": "Movistar",
       "cuit": "30-70216638-6",
       "picture_url": "string",
       "category": {
-        "id": "3",
+        "id": "03",
         "name": "Telefonía"
-      }
+      },
+      "registeredUsers": [
+        {
+          "clientId" : "88888888"
+        }
+      ]
     },
     {
-      "id": "9",
+      "serviceId": "0009",
       "type": "service",
       "name": "Claro",
       "cuit": "30-68267141-8",
       "picture_url": "string",
       "category": {
-        "id": "3",
+        "id": "03",
         "name": "Telefonía"
-      }
+      },
+      "registeredUsers": [
+        {
+          "clienteId" : "88888888"
+        },
+        {
+          "clienteId" : "99999999"
+        }
+      ]
     }
   ]

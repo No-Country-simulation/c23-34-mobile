@@ -1,11 +1,9 @@
 import {userModel} from '../models/user.model.js';
-import {serviceModel} from '../models/service.model.js';
 import {readJSON} from '../utils/utils.js';
 
 export class ProviderService{
     //consumer_id es un identificador de la aplicacion brindada por la api
     static async getCategories(){
-
         const categoriesList =  readJSON('../data/categories.json') 
         if(categoriesList.length == 0) throw new Error('There are not categories')
 
@@ -13,29 +11,37 @@ export class ProviderService{
     }
     static async getCompanies({categoryId}){
         const companiesList = readJSON('../data/companies.json')
-        if(companiesList.length == 0) throw new Error('There are not cmpanies')
-
-        return companiesList
+        if(companiesList.length == 0) throw new Error('There are not companies')
+        const filterCompanies = companiesList.filter(c => c.category.id == categoryId)
+        return filterCompanies
     }
     static async suscribedToService({serviceBody}){
-        //user add a service by number of identification, body: data service, service_id, user_id, user_identification
-        const addService = true//validate service by ID
-        if(!addService) throw new Error('ID no match with service')
-        let service = await serviceModel.findOne({serviceId: serviceBody.serviceId})//si hay match add service in user array
-        if(!service) service =  await serviceModel.create({}) 
-        const user = await userModel.findById(serviceBody.user_id)
+        //body: userId, serviceId, clientId
+        const {serviceId, clientId, userId} = serviceBody
+        //get companies 
+        const companiesList = readJSON('../data/companies.json')
+        if(companiesList.length == 0) throw new Error('There are not companies')
+        //get service by serviceId
+        const service = companiesList.find(s => s.serviceId == serviceId)
+        if(!service) throw new Error('Service no found')
+        //validate clientId
+        const isClienteId = service.registeredUsers.some(c => c.clientId == clientId)
+        if(!isClienteId) throw new Error('Client_ID no is registered') 
+        //get user and validate if user has service
+        const user = await userModel.findById(userId)
         if(!user) throw new Error('User no found')
-        const isService = user.userFavoriteServices.some(s => s.id == service._id)//validate if user has service
+        const isService = user.userFavoriteServices.some(s => s.serviceId == serviceId)
         if(isService) throw new Error('service is registered')
-        user.userFavoriteServices.push({id : service._id})
+        user.userFavoriteServices.push({serviceId})
         await user.save()
-        return {success: true, message : 'Service successfully suscribed', service}
+        return {success: true, message : 'suscribed success to service', user}
     }
     static async servicesDebt({sdBody}){
-        //return debts of user by service_id, craete filter
+        const {serviceId} = sdBody
         const debtsList = readJSON('../data/debts.json')
         if(debtsList.length == 0) throw new Error('There are no debts')
-
-        return debtsList
-    }
+        const filterDebts = debtsList.filter(d => d.company.serviceId == serviceId)
+        if(!filterDebts) throw new Error('Thre are not debts')
+        return  filterDebts
+    } 
 }

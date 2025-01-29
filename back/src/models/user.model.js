@@ -7,7 +7,7 @@ const schema = new Schema({
     userEmail : {type:String, required:true, unique : true},   
     userPassword : {type:String, required:true},    
     userFavoriteServices : {
-        type : [ {_id : {type:Schema.Types.ObjectId, ref : 'service'}}],
+        type : [ {serviceId : {type: String, required : true}} ],
         default : []
     }
 })

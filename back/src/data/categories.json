@@ -1,20 +1,14 @@
 [
     {
-        "id": "1",
-        "type": "utility",
-        "name": "Luz",
-        "order": 1
+        "id": "01",
+        "name": "Luz"
     },
     {
-        "id": "2",
-        "type": "insurance",
-        "name": "Medicina Prepaga",
-        "order": 2
+        "id": "02",
+        "name": "Medicina Prepaga"
     },
     {
-        "id": "3",
-        "type": "telecom",
-        "name": "Telefonía",
-        "order": 3
+        "id": "03",
+        "name": "Telefonía"
     }
 ]

@@ -1,57 +1,38 @@
 [
-    {
-        "company_information": {
-          "company_id": "1",
-          "company_type": "T",
-          "company_name": "Movistar",
-          "identification_title": "Factura Movistar",
-          "currency": "ARS",
-          "cuit": "30-65786235-9",
-          "category": {
-            "id": "3",
-            "name": "Telefonía"
-          },
-          "client_id": "C-2001",
-          "due_date": "2024-02-20",
-          "amount": 4890.50,
-          "invoice_id": "INV-20240220-CLA001"
-        }
-      },
-      {
-        "company_information": {
-          "company_id": "2",
-          "company_type": "T",
-          "company_name": "Movistar",
-          "identification_title": "Factura Movistar",
-          "currency": "ARS",
-          "cuit": "30-99924210-4",
-          "category": {
-            "id": "3",
-            "name": "Telefonía"
-          },
-          "client_id": "C-2002",
-          "due_date": "2024-03-10",
-          "amount": 3500.00,
-          "invoice_id": "INV-20240310-MOV002"
-        }
-      },
-      {
-        "company_information": {
-          "company_id": "3",
-          "company_type": "T",
-          "company_name": "Telecom Personal",
-          "identification_title": "Factura Personal",
-          "currency": "ARS",
-          "cuit": "30-63945373-8",
-          "category": {
-            "id": "3",
-            "name": "Telefonía"
-          },
-          "client_id": "C-2003",
-          "due_date": "2024-03-05",
-          "amount": 4200.75,
-          "invoice_id": "INV-20240305-PER003"
-        }
-      }
-        
+  {
+    "company": {
+      "serviceId": "0008",
+      "name" : "Movistar"
+    },
+      "client_id": "88888888",
+      "client_description": "string",
+      "due_date": "2024-02-20",
+      "amount": 4890.50,
+      "invoice_title": "Factura Movistar",
+      "invoice_id": "INV-20240220-CLA001"
+  },
+  {
+    "company": {
+      "serviceId": "0008",
+      "name" : "Movistar"
+    },
+      "client_id": "99999999",
+      "client_description": "string",
+      "due_date": "2024-03-10",
+      "amount": 3500.00,
+      "invoice_title": "Factura Movistar",
+      "invoice_id": "INV-20240310-MOV002"
+  },
+  {
+    "company": {
+      "serviceId": "0007",
+      "name" : "Personal"
+    },
+    "client_id": "88888888",
+    "client_description": "string",
+    "due_date": "2024-03-05",
+    "amount": 4200.75,
+    "invoice_title": "Factura Movistar",
+    "invoice_id": "INV-20240305-PER003"
+  }
 ]
