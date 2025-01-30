@@ -36,4 +36,22 @@ export class ProviderController{
             next(error)
         }
     }
+    static async getServices(req,res,next){
+        try {
+            const {id} = req.params
+            const services = await ProviderService.getServices({id})
+            res.status(200).json(services)
+        } catch (error) {
+            next(error)
+        }
+    }
+    static async deleteService(req,res,next){
+        try {
+            const {id,serviceId} = req.params
+            const user = await ProviderService.deleteService({id,serviceId})
+            return res.status(200).json(user)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
