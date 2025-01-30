@@ -20,6 +20,6 @@ export class AuthService{
         if(!validatePass) throw new Error('Password no match with email')
         const token = jwt.sign({id : user._id}, SECRET_KEY, {expiresIn : '30m'} )
         
-        return token
+        return {token, user}
     }
 }

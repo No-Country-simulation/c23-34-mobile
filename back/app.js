@@ -1,15 +1,16 @@
 import express from 'express';
+import cors from 'cors';
 import {validateToken} from './src/middlewares/validateToken.js';
 import {errorMiddleware} from './src/middlewares/error.js';
 
 import {userRouter} from './src/routers/user.router.js';
 import {paymentRouter} from './src/routers/payment.router.js';
 import {paymentMethodRouter} from './src/routers/paymentMethod.router.js';
-import {serviceRouter} from './src/routers/service.router.js';
 import {authRouter} from './src/routers/auth.router.js';
 import {providerRouter} from './src/routers/provider.router.js';
 
 export const app = express();
+app.use(cors({origin : '*'}))
 app.use(express.json());
 //routes public access 
 app.use('/auth',authRouter)
@@ -17,7 +18,6 @@ app.use('/auth',authRouter)
 app.use(validateToken)
 app.use('/provider', providerRouter)
 app.use('/user',userRouter)
-app.use('/service',serviceRouter)
 app.use('/payment',paymentRouter)
 app.use('/paymentMethod',paymentMethodRouter)
 app.use(errorMiddleware)

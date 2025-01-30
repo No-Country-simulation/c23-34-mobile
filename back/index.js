@@ -5,5 +5,5 @@ import {app} from './app.js';
 connectDB()
 .then(()=> {
     console.log('Conection with DB');
-    app.listen(PORT, ()=>{console.log(`Server running in port ${PORT}`);})
+    app.listen(PORT,'0.0.0.0', ()=>{console.log(`Server running in port ${PORT}`);})
 }).catch(() => console.log('Error to connect DB'))
