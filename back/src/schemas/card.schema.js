@@ -1,6 +1,6 @@
 import {z} from 'zod';
 
-export const paymentMethodSchema = z.object({
+export const cardSchema = z.object({
     userId: z.string().regex(/^[a-fA-F0-9]{24}$/, "El valor debe ser un ObjectId válido"),
     cardHolderName : z.string().min(3),
     cardNumber : z.string().min(12),

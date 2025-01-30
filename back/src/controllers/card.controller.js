@@ -1,9 +1,9 @@
-import {PaymentMethodService} from '../services/paymentMethod.service.js';
+import {CardService} from '../services/card.service.js';
 
-export class PaymentMethodController{
+export class CardController{
     static async getPaymentMethods(req,res,next){
         try {
-            const paymentMethods = await PaymentMethodService.getPaymentMethods()
+            const paymentMethods = await CardService.getPaymentMethods()
             res.status(200).json(paymentMethods)
         } catch (error) {
             next(error)            
@@ -12,7 +12,7 @@ export class PaymentMethodController{
     static async getPaymentMethodById(req,res,next){
         try {
             const {id} = req.params
-            const paymentMethod = await PaymentMethodService.getPaymentMethodById({id})
+            const paymentMethod = await CardService.getPaymentMethodById({id})
             res.status(200).json(paymentMethod)
         } catch (error) {
             next(error)
@@ -21,7 +21,7 @@ export class PaymentMethodController{
     static async createPaymentMethod(req,res,next){
         try {
             const pmBody = req.body
-            const paymentMethod = await PaymentMethodService.createPaymentMethod({pmBody})
+            const paymentMethod = await CardService.createPaymentMethod({pmBody})
             res.status(201).json(paymentMethod)
         } catch (error) {
             next(error)
@@ -31,7 +31,7 @@ export class PaymentMethodController{
         try {
             const {id} = req.params
             const pmBody = req.body
-            const paymentMethod = await PaymentMethodService.updatePaymentMethod({id,pmBody})
+            const paymentMethod = await CardService.updatePaymentMethod({id,pmBody})
             res.status(200).json(paymentMethod)
         } catch (error) {
             next(error)
@@ -40,7 +40,7 @@ export class PaymentMethodController{
     static async deletePaymentMethod(req,res,next){
         try {
             const {id} = req.params
-            const paymentMethod = await PaymentMethodService.deletePaymentMethod({id})
+            const paymentMethod = await CardService.deletePaymentMethod({id})
             res.status(200).json(paymentMethod)
         } catch (error) {
             next(error)

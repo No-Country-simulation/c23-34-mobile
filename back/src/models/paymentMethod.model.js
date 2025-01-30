@@ -10,5 +10,5 @@ const schema = new Schema({
     cardDateCreated : {type: Date, default: Date.now}
 })
 
-export const paymentMethodModel = model('paymentMethod', schema);   
+export const cardModel = model('paymentMethod', schema);   
 

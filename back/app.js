@@ -5,7 +5,7 @@ import {errorMiddleware} from './src/middlewares/error.js';
 
 import {userRouter} from './src/routers/user.router.js';
 import {paymentRouter} from './src/routers/payment.router.js';
-import {paymentMethodRouter} from './src/routers/paymentMethod.router.js';
+import {cardRouter} from './src/routers/card.router.js';
 import {authRouter} from './src/routers/auth.router.js';
 import {providerRouter} from './src/routers/provider.router.js';
 
@@ -19,6 +19,6 @@ app.use(validateToken)
 app.use('/provider', providerRouter)
 app.use('/user',userRouter)
 app.use('/payment',paymentRouter)
-app.use('/paymentMethod',paymentMethodRouter)
+app.use('/card',cardRouter)
 app.use(errorMiddleware)
 
