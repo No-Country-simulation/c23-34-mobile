@@ -15,7 +15,8 @@ export default function DashboardLayout() {
           sceneStyle: {
             flex: 1,
             backgroundColor:
-              route.name == "(tabs)/notifications"
+              route.name == "(tabs)/notifications" ||
+              route.name == "(screens)/details/[id]"
                 ? "#f7f7f7"
                 : ColorsBase.cyan100,
             paddingHorizontal: 15,
@@ -81,13 +82,22 @@ export default function DashboardLayout() {
           }}
         />
         <Tabs.Screen
-          name="(screens)/viewDetails"
+          name="(screens)/details/[id]"
           options={{
             title: "",
             headerShown: false,
             tabBarIcon: () => null,
             tabBarItemStyle: { display: "none" },
           }}
+        />
+        <Tabs.Screen 
+        name="(screens)/addServicio/AddNewService"
+        options={{
+          title: "",
+          headerShown: false,
+          tabBarIcon: () => null,
+          tabBarItemStyle: { display: "none" },
+        }}
         />
       </Tabs>
     </SafeAreaView>

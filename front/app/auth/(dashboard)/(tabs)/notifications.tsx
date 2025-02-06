@@ -23,6 +23,41 @@ const notifications = () => {
       time: "Hace 2 horas",
       status: "Atrasado",
     },
+    {
+      title: "!Tu factura del gas esta por vencer",
+      subtitle:
+        "Faltan 4 dias para el vencimiento de tu factura el monto de : $ 20.000",
+      time: "Hace 2 horas",
+      status: "Atrasado",
+    },
+    {
+      title: "!Tu factura del gas esta por vencer",
+      subtitle:
+        "Faltan 4 dias para el vencimiento de tu factura el monto de : $ 20.000",
+      time: "Hace 2 horas",
+      status: "Atrasado",
+    },
+    {
+      title: "!Tu factura del gas esta por vencer",
+      subtitle:
+        "Faltan 4 dias para el vencimiento de tu factura el monto de : $ 20.000",
+      time: "Hace 2 horas",
+      status: "Pagado",
+    },
+    {
+      title: "!Tu factura del gas esta por vencer",
+      subtitle:
+        "Faltan 4 dias para el vencimiento de tu factura el monto de : $ 20.000",
+      time: "Hace 2 horas",
+      status: "Atrasado",
+    },
+    {
+      title: "!Tu factura del gas esta por vencer",
+      subtitle:
+        "Faltan 4 dias para el vencimiento de tu factura el monto de : $ 20.000",
+      time: "Hace 2 horas",
+      status: "Atrasado",
+    },
   ];
   return (
     <FlatList

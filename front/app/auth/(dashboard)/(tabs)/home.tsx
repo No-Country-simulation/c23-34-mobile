@@ -9,10 +9,59 @@ import { Button } from 'react-native-paper'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { ThemedText } from '../../../../components/ThemedText'
 import HeaderApp from '../../../../components/HeaderApp'
+import useServices from '@/hooks/useServices'
 
-const BodyDashboard = () => {
-	const [totalDebt, setTotalDebt] = useState(0.1)
+const Home = () => {
+	const dataClient = [
+		{
+			id: 1,
+			type: 'Electricidad',
+			Empresa: 'EDENOR',
+			Client: '88698235',
+			status: 'Atrasado',
+			fechVen: '2025-01-31',
+			totalPagar: '75900',
+		},
+		{
+			id: 2,
+			type: 'Agua',
+			Empresa: 'EDENOR',
+			Client: '88698235',
+			status: 'Pendiente',
+			fechVen: '2025-02-07',
+			totalPagar: '75900',
+		},
+		{
+			id: 3,
+			type: 'Gas',
+			Empresa: 'MetroGas',
+			Client: '88698235',
+			status: 'Pagado',
+			fechVen: '2025-02-15',
+			totalPagar: '75900',
+		},
+		{
+			id: 4,
+			type: 'Internet',
+			Empresa: 'Movistar',
+			Client: '88698235',
+			status: 'Pagado',
+			fechVen: '2025-02-15',
+			totalPagar: '75900',
+		},
+		{
+			id: 5,
+			type: 'Internet',
+			Empresa: 'Movistar',
+			Client: '88698235',
+			status: 'Pagado',
+			fechVen: '2025-02-15',
+			totalPagar: '75900',
+		},
+	]
 	const [pressCards, setPressCards] = useState(true)
+	const { calculateSums,calculateProgress } = useServices()
+	const { pagados, noPagados } = calculateSums(dataClient)
 	return (
 		<FlatList
 			data={[]}
@@ -20,7 +69,11 @@ const BodyDashboard = () => {
 			ListHeaderComponent={() => (
 				<View style={{ gap: 15 }}>
 					<HeaderApp />
-					<TotalPayment progress={0.5} />
+					<TotalPayment
+						progress={calculateProgress(dataClient)}
+						totalDebt={noPagados}
+						totalPagados={pagados}
+					/>
 					<View
 						style={{
 							flexDirection: 'row',
@@ -46,7 +99,6 @@ const BodyDashboard = () => {
 									: ColorsBase.cyan500
 							}
 							onPress={() => {
-								setTotalDebt(0.5)
 								setPressCards(true)
 							}}
 							mode={pressCards ? 'contained' : 'outlined'}
@@ -94,11 +146,15 @@ const BodyDashboard = () => {
 							</ThemedText>
 						</Button>
 					</View>
-					{pressCards ? <ServicesClient /> : <AllCards />}
+					{pressCards ? (
+						<ServicesClient data={dataClient} />
+					) : (
+						<AllCards />
+					)}
 				</View>
 			)}
 		/>
 	)
 }
 
-export default memo(BodyDashboard)
+export default memo(Home)
