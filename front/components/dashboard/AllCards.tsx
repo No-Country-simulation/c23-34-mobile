@@ -18,16 +18,16 @@ const AllCards = () => {
   const [loading, setLoading] = useState(true);
 
   const handleGetCards = async () => {
-	const {ok, data} = await apiGetCards();
-	if(ok){
-		setCards(data);
-		setLoading(false);
-	}
-  }
+    const { ok, data } = await apiGetCards();
+    if (ok) {
+      setCards(data);
+      setLoading(false);
+    }
+  };
 
-  useEffect(()=>{
-    handleGetCards()
-  },[]);
+  useEffect(() => {
+    handleGetCards();
+  }, []);
 
   return (
     <Animated.FlatList
@@ -38,13 +38,13 @@ const AllCards = () => {
       }}
       ListHeaderComponent={
         <SimpleButton
-		onPress={()=>router.push("/paymentMethod")}
+          onPress={() => router.push("/paymentMethod")}
           style={{
             flexDirection: "row",
             backgroundColor: ColorsBase.neutral800,
             justifyContent: "space-between",
             borderRadius: 32,
-			paddingHorizontal: 16
+            paddingHorizontal: 16,
           }}
         >
           <ThemedText style={{ color: ColorsBase.neutral50, fontWeight: 700 }}>
@@ -57,15 +57,11 @@ const AllCards = () => {
           />
         </SimpleButton>
       }
-	  ListEmptyComponent={
-		<ThemedText>No hay terjetas registradas</ThemedText>
-	  }
+      ListEmptyComponent={<ThemedText>No hay terjetas registradas</ThemedText>}
       renderItem={({ item }) => (
         <LinearGradient
           colors={
-            cards.length > 0 
-              ? ["#0048b8", "#0072ff"]
-              : ["#148A14", "#47B747"]
+            cards.length > 0 ? ["#0048b8", "#0072ff"] : ["#148A14", "#47B747"]
           }
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}

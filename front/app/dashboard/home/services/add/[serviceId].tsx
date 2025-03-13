@@ -1,19 +1,16 @@
 import {
   AddService,
   apiAddService,
-  apiGetServicesByCategory,
-  apiGetServicesCategories,
 } from "@/api/providers.service";
 import authStyles from "@/components/auth/authStyles";
 import MyInputText from "@/components/auth/MyInputText";
 import SimpleButton from "@/components/auth/SimpleButton";
 import HeaderApp from "@/components/dashboard/HeaderApp";
-import IconStatus from "@/components/IconStatus";
 import { ThemedText } from "@/components/ThemedText";
 import { ColorsBase } from "@/constants/Colors";
 import { useAuthStore } from "@/hooks/useAuthStore";
 import { useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ScrollView, Text, View } from "react-native";
 

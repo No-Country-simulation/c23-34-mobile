@@ -6,7 +6,6 @@ import ThemedLink from "@/components/auth/ThemedLink";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Colors, ColorsBase } from "@/constants/Colors";
-import { router } from "expo-router";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import {

@@ -4,8 +4,6 @@ import { Stack } from "expo-router";
 import { useEffect } from "react";
 import { Modal, View } from "react-native";
 import LoadingScreen from "../loading";
-import { ThemedText } from "@/components/ThemedText";
-import Animated, { FadeIn } from "react-native-reanimated";
 
 export default function AuthLayout() {
   const { status, checkAuthToken } = useAuthStore();
